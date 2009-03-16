@@ -96,8 +96,10 @@ abstract class spyFormBuilderParams{
 				if(isset($this->values['options'][$name])){
 					$option['value']=$this->values['options'][$name];
 				}else{
-					if(array_key_exists('default',$option['options'])){
-							$option['value']=$option['options']['default'];
+					if(array_key_exists('options',$option)){
+						if(array_key_exists('default',$option['options'])){
+								$option['value']=$option['options']['default'];
+						}
 					}
 				}
 				echo '<div class="form-row">';
@@ -110,8 +112,10 @@ abstract class spyFormBuilderParams{
 				if(isset($this->values['attributes'][$name])){
 					$attr['value']=$this->values['attributes'][$name];
 				}else{
-					if(array_key_exists('default',$attr['options'])){
-							$option['value']=$$attr['options']['default'];
+					if(array_key_exists('attributes',$attr)){
+						if(array_key_exists('default',$attr['attributes'])){
+								$attr['value']=$attr['attributes']['default'];
+						}
 					}
 				}
 				echo '<div class="form-row">';
