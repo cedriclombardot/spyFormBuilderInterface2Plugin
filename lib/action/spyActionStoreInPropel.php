@@ -3,13 +3,26 @@
 class spyActionStoreInPropel extends spyFormActionBase{
 	
 	public function configure($options){
-		
-		print_r($options);
+		if($this->getOption('table_name')==''){
+			$this->setOption('table_name',str_replace(' ','_',$this->getContext()->form_object->getName()));
+		}
+		$this->setOption('class',sfInflector::camelize($this->getOption('table_name')));
 	}
 	
 	public function execute(){
-		
-		
+		$c=$this->getOption('class');
+		if($this->getContext()->isInEditMode()){
+			$myObject=call_user_func_array(array($c.'Peer','retrieveByPk'),array('id'=>$this->getContext()->datas['id']));
+			if(!$myObject instanceof $c){
+				$myObject=new $c;
+			}
+		}else{
+			$myObject=new $c;
+		}
+		foreach($this->getDatas() as $field=>$value){
+			call_user_func_array(array($myObject,'set'.sfInflector::camelize($field)),array($value));
+		}
+		$myObject->save();
 	}
 	
 	public static function generateYml(){
@@ -21,8 +34,8 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		$form=$action->getSpyFormBuilder();
 		$fields=$form->getSpyFormBuilderFieldss();
 		$db=$action->getParameter('dbname','propel');
-		$tb=$action->getParameter('table_name',$form->getName());
-		$table=str_replace(' ','_',$tb);
+		$tb=$action->getParameter('table_name',str_replace(' ','_',$form->getName()));
+		$table=$tb;
 		$yml[$db]=array($table=>array());
 		$yml_table=&$yml[$db][$table];
 		$yml_table['id']='~';

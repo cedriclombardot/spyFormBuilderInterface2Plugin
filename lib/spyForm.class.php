@@ -6,7 +6,8 @@
 class spyForm {
 	
 	
-	public function __construct($form_id){
+	public function __construct($form_id,$datas=array()){
+		$this->datas=$datas;
 		
 		require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_widgets.yml'));
 		
@@ -38,7 +39,7 @@ class spyForm {
 		$app=sfContext::getInstance()->getConfiguration()->getApplication();
 		foreach($this->fields as $field){
 			if((!$field->getOnlyFor())||(in_array($app,$field->getOnlyFor()))){
-				
+				if((!$field->getHideOnEdit())||(!$this->isInEditMode())||(!in_array($app,$field->getHideOnEdit()))){
 			
 			$wclass=$this->all_fields[$field->getWidgetType()]['type'];
 			$params=$field->getWidgetParams();
@@ -82,7 +83,9 @@ class spyForm {
 				$valids[$field->getName()]=new sfValidatorNone();
 			}
 			
+				}//End hideOnEdit
 			}//end only_for
+			
 		}
 		
 		//Insert les champs
@@ -95,10 +98,17 @@ class spyForm {
 		if(sizeof($helps)>0)
 			$this->formulaire->getWidgetSchema()->setHelps($helps);
 		
+		//Edit Mode
+		if($this->isInEditMode()){
+			$this->formulaire->setDefaults($this->datas);
+		}
+		
 		//Validators
 		$this->formulaire->setValidators($valids);
 			
 		$this->formulaire->getWidgetSchema()->setNameFormat('spy_form_builder[%s]');
+		
+		
 		
 		/*
 		 * Bind
@@ -113,6 +123,9 @@ class spyForm {
 		}
 	}
 	
+	public function isInEditMode(){
+		return (sizeof($this->datas)>0);
+	}
 	protected function doPostActions(){
 		$this->actions=$this->form_object->getSpyFormBuilderActions();
 		foreach($this->actions as $action){
@@ -122,7 +135,7 @@ class spyForm {
 			$options=(array_key_exists('options',$params))?$params['options']:array();
 			
 			
-			$myAction=new $action_class($options, $this->formulaire->getValues());
+			$myAction=new $action_class($options, $this->formulaire->getValues(),$this);
 			$myAction->execute();
 		}
 	}
@@ -134,6 +147,12 @@ class spyForm {
 			$form_submit_url.='?id='.sfContext::getInstance()->getRequest()->getParameter('id');
 		}elseif(sfContext::getInstance()->getRequest()->getParameter('form_name')){
 			$form_submit_url.='?form_name='.sfContext::getInstance()->getRequest()->getParameter('form_name');
+		}
+		if(sfContext::getInstance()->getRequest()->getParameter('edit')){
+			$form_submit_url.='&edit='.sfContext::getInstance()->getRequest()->getParameter('edit');
+		}
+		if(sfContext::getInstance()->getRequest()->getParameter('table')){
+			$form_submit_url.='&table='.sfContext::getInstance()->getRequest()->getParameter('table');
 		}
 		eval('?>'.$this->form_object->getTemplate());
 	}

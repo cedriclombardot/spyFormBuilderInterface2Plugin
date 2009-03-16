@@ -6,20 +6,29 @@ abstract class spyFormActionBase {
 	
 	protected $datas=array();
 	
-	public function __construct($options, $datas){
+	protected $context;
+	
+	public function __construct($options, $datas, spyForm $context){
 		$this->setDatas($datas);
-		
-		$this->configure($options);
+		$this->context=$context;
 		$this->setOptions($options);
+		$this->configure($options);
+		
 	}
 	
+	/*
+	 * @return spyForm
+	 */
+	public function getContext(){
+		return $this->context;
+	}
 	
 	public function setOptions($options=array()){
 		$this->options=array_merge($this->getOptions(),$options);
 	}
 	
 	public function setOption($option,$value){
-		$this->options[$options]=$value;
+		$this->options[$option]=$value;
 	}
 	public function getOptions(){
 		return $this->options;
