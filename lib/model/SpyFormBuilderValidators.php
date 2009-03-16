@@ -18,6 +18,12 @@ class SpyFormBuilderValidators extends BaseSpyFormBuilderValidators
 			return unserialize(parent::getValidatorParams());
 		return array();
 	}
+	public function getParameter($name,$default=null){
+		$params=$this->getValidatorParams();
+		if(array_key_exists($name,$params))
+			return $params[$name];
+		return $default;
+	}
 	public function insertAtLastPos(){
 		$this->setRank($this->getMaxRank()+1);
 	}

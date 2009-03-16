@@ -12,6 +12,12 @@ class SpyFormBuilderFields extends BaseSpyFormBuilderFields
 	public function getWidgetParams(){
 		return unserialize(parent::getWidgetParams());
 	}
+	public function getParameter($name,$default=null){
+		$params=$this->getWidgetParams();
+		if(array_key_exists($name,$params))
+			return $params[$name];
+		return $default;
+	}
 	public function insertAtLastPos(){
 		$this->setRank($this->getMaxRank()+1);
 	}

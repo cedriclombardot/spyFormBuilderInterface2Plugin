@@ -1,12 +1,30 @@
 <?php
+require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_actions.yml'));
 
 class SpyFormBuilderAction extends BaseSpyFormBuilderAction
 {
 	public function getActions(){
-		return '';
+		
+		$request = sfContext::getInstance()->getRequest();
+  		$root = $request->getRelativeUrlRoot();
+
+		$all_actions=sfConfig::get('sfa_actions_actions');
+		if(!array_key_exists($this->getActionType(),$all_actions))
+			return '';
+		foreach($all_actions[$this->getActionType()] as $aname=>$action){
+			
+			echo '<a href="'.sfContext::getInstance()->getController()->genUrl('spyFormBuilderInterfaceActions/action',false).'/do/'.$aname.'/id/'.$this->getId().'" title="'.$action['title'].'"><img src="'.$root.'/'.$action['img'].'" alt="'.$action['title'].'" /></a>';
+		}
 	}
 	public function getActionParams(){
 		return unserialize(parent::getActionParams());
+	}
+	
+	public function getParameter($name,$default=null){
+		$params=$this->getActionParams();
+		if(array_key_exists($name,$params))
+			return $params[$name];
+		return $default;
 	}
 	public function save(PropelPDO $con=null){
 		if(!$this->getRank()){

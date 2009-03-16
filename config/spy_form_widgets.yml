@@ -4,6 +4,10 @@ all:
       input_text:
         name: Text Field
         type: sfWidgetFormInput
+        storage:
+          type: varchar
+          size: 255
+          index: index
         params:
           attributes:
             size:
