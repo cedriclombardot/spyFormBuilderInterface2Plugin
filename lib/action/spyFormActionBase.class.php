@@ -8,8 +8,9 @@ abstract class spyFormActionBase {
 	
 	public function __construct($options, $datas){
 		$this->setDatas($datas);
-		$this->configure($options);
 		$this->setOptions($options);
+		$this->configure($options);
+		
 	}
 	
 	

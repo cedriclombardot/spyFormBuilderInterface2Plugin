@@ -20,10 +20,13 @@ class SpyFormBuilderAction extends BaseSpyFormBuilderAction
 		return unserialize(parent::getActionParams());
 	}
 	
-	public function getParameter($name,$default=null){
+	public function getParameter($name,$default=null,$group='options'){
 		$params=$this->getActionParams();
-		if(array_key_exists($name,$params))
-			return $params[$name];
+	
+		if(array_key_exists($name,$params[$group])){
+			if($params[$group][$name]!='')
+				return $params[$group][$name];
+		}
 		return $default;
 	}
 	public function save(PropelPDO $con=null){

@@ -4,6 +4,7 @@ class spyActionStoreInPropel extends spyFormActionBase{
 	
 	public function configure($options){
 		
+		print_r($options);
 	}
 	
 	public function execute(){
@@ -20,7 +21,8 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		$form=$action->getSpyFormBuilder();
 		$fields=$form->getSpyFormBuilderFieldss();
 		$db=$action->getParameter('dbname','propel');
-		$table=$action->getParameter('table_name',str_replace(' ','_',$form->getName()));
+		$tb=$action->getParameter('table_name',$form->getName());
+		$table=str_replace(' ','_',$tb);
 		$yml[$db]=array($table=>array());
 		$yml_table=&$yml[$db][$table];
 		$yml_table['id']='~';
@@ -29,7 +31,7 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		}
 		
 		$o='<h1>'.sfContext::getInstance()->getI18N()->__('Generate the YML').'</h1>';
-		$o.='Recopiez le code ci dessous dans le schema.yml et executer propel:build-all-diff <br/>';
+		$o.=sfContext::getInstance()->getI18N()->__('copy this yml code into your schema and execute propel:build-all-diff').'<br/>';
 		$o.= '<textarea cols="100" rows="20">';
 		$o.= sfYaml::dump($yml,3);
 		$o.= '</textarea>';
