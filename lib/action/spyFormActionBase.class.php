@@ -8,9 +8,9 @@ abstract class spyFormActionBase {
 	
 	public function __construct($options, $datas){
 		$this->setDatas($datas);
-		$this->setOptions($options);
-		$this->configure($options);
 		
+		$this->configure($options);
+		$this->setOptions($options);
 	}
 	
 	
@@ -18,6 +18,9 @@ abstract class spyFormActionBase {
 		$this->options=array_merge($this->getOptions(),$options);
 	}
 	
+	public function setOption($option,$value){
+		$this->options[$options]=$value;
+	}
 	public function getOptions(){
 		return $this->options;
 	}
