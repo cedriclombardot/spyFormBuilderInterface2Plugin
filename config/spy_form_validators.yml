@@ -1,0 +1,41 @@
+all:
+  validators:
+    rules:
+      required_1:
+        name: Required
+        type: sfValidatorRequired
+      string_max_length:
+        name: String Max Length Validator
+        type: sfValidatorLengthString
+        params:
+          options:
+            max_length:
+              name: Max length
+              type: sfWidgetFormInput
+              attributes:
+                size: 3
+              validators:
+                  numeric:
+                    class: sfValidatorInteger
+                    params:
+                    messages:
+                      invalid: You must set an number
+      string_min_length:
+        name: String Min Length Validator
+        type: sfValidatorLengthString
+        params:
+          options:
+            min_length:
+              name: Min length
+              type: sfWidgetFormInput
+              attributes:
+                size: 3
+              validators:
+                  numeric:
+                    class: sfValidatorInteger
+                    params:
+                    messages:
+                      invalid: You must set an number
+      email:
+        name: Email Validator
+        type: sfValidatorEmail               

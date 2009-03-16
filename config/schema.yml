@@ -1,0 +1,36 @@
+propel:
+  _attributes: {   package: plugins.spyFormBuilderInterface2Plugin.lib.model }
+  
+  spy_form_builder:  #Table de liste des Formulaires
+    id: ~
+    name: { type: varchar, size: 255, required: true, index: unique }
+    template: { type: longvarchar }
+    created_at: ~
+    
+  spy_form_builder_fields:  #Table de liste des champs
+    id: ~
+    widget_type: { type: varchar, size: 255, required: true, index: index }
+    label: { type: varchar, size: 255 }
+    name: { type: varchar, size: 255 }
+    help: { type: varchar, size: 255 }
+    widget_params: { type: longvarchar }
+    hide_on_edit: {  type: longvarchar }
+    only_for: { type: longvarchar }
+    form_id: { type: integer, foreignTable: spy_form_builder, foreignReference: id, onDelete: cascade, required: true }
+    created_at: ~
+    rank: { type: integer }
+    
+  spy_form_builder_validators: #Liste des validations de formulaires pour les champs
+    id: ~
+    validator_type: { type: varchar, size: 255, required: true, index: index }
+    field_id: { type: integer, foreignTable: spy_form_builder_fields, foreignReference: id, onDelete: cascade, required: true }
+    validator_params: { type: longvarchar }
+    invalid_msg: { type: longvarchar }
+    rank: { type: integer }
+
+  spy_form_builder_action:
+    id: ~
+    action_type: { type: varchar, size: 255, required: true, index: index }
+    action_params: { type: longvarchar }
+    form_id: { type: integer, foreignTable: spy_form_builder, foreignReference: id, onDelete: cascade, required: true }   
+    rank: { type: integer }

@@ -1,0 +1,7 @@
+methods:
+  post:
+    - "spy_form_builder_action{action_type}"
+names:
+  spy_form_builder_action{action_type}:
+    required: true
+    required_msg: Vous devez choisir un type d'action

@@ -1,0 +1,29 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      SpyFormBuilder
+    theme:            default
+    
+
+    list: 
+      title:          List of your forms
+      display:        [ =name ] 
+      object_actions:
+        _edit:       ~
+        _delete:     ~
+    
+    edit:
+      title:          Modification of the form <small><i>[%%name%%]</i></small>
+      display:
+        NONE: [ name ]
+        "Fields list": [ ~fields ]
+        "Actions list": [ ~actions ]
+      actions:
+        _list: ~
+        _save: ~
+        _delete: ~
+        template:
+          name: Personalize the template
+          action: template
+
+          

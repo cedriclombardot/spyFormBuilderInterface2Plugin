@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" >
+  <body>
+      <trans-unit>
+         <source>Return to the form</source>
+          <target>Retour au formulaire</target>
+      </trans-unit>
+      <trans-unit>
+         <source>Widget type</source>
+          <target>Type de champ</target>
+      </trans-unit>
+      <trans-unit>
+         <source>Hide on edit</source>
+          <target>Cacher à l'édition</target>
+      </trans-unit>
+  </body>
+ </file>
+</xliff>

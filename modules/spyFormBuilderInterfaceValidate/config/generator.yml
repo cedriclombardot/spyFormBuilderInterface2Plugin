@@ -1,0 +1,46 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      SpyFormBuilderValidators
+    theme:            default
+    
+    fields:
+      error_msg: 
+        name:        Message d'erreur
+        type: input_tag
+        params:
+          size: 100
+      fldvalidation_type:
+        name:        Type de validation
+      field_params:
+        name:        Paramètres
+ 
+    
+    list:
+       title:         Liste des validations
+       
+    edit:
+      title:         Edition de la validation
+      display:
+          NONE:  [ _validator_type , _field_id ]
+          "Message": [ invalid_msg ]
+          #"Paramères": [  ]
+      actions:
+        dolist: 
+          name: Retour au formulaire
+          type: submit_tag
+          params: class=sf_admin_action_list name=doList
+          action: doList
+          
+        _save: ~
+        _save_and_list: ~
+        _delete: ~
+      fields:
+        fldvalidation_type: 
+          params:
+            onChange:  $ajaxreplace('sf_fieldset_param__res', '../../params/fldvalidation_type/'+this.value, false); $('params_o').innerHTML='';
+        field_id:
+          type: input_tag
+          name: ""
+        field_params:
+          name:        ""

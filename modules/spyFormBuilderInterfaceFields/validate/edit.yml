@@ -1,0 +1,12 @@
+methods:
+  post:
+    - "spy_form_builder_fields{widget_type}"
+    - "spy_form_builder_fields{name}"
+    
+names:
+  spy_form_builder_fields{widget_type}:
+    required: true
+    required_msg: Vous devez choisir un type de champ
+  spy_form_builder_fields{name}:
+   required: true
+   required_msg: Vous devez mettre un nom

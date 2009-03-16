@@ -1,0 +1,13 @@
+config/spy_form_widgets.yml:
+  class:    sfDefineEnvironmentConfigHandler
+  param:
+    prefix: sfw_
+config/spy_form_validators.yml:
+  class:    sfDefineEnvironmentConfigHandler
+  param:
+    prefix: sfv_
+
+config/spy_form_actions.yml:
+  class:    sfDefineEnvironmentConfigHandler
+  param:
+    prefix: sfa_

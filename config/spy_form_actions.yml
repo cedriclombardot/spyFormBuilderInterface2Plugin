@@ -1,0 +1,35 @@
+all:
+  actions:
+    post:
+      send_mail:
+        name: Send an Email
+        type: spyActionSendMail
+        params:
+          options:
+            to:
+             name: Destnator of the mail
+             type: sfWidgetFormInput
+             attributes:
+               size: 30
+             validators:
+               email:
+                 class: sfValidatorEmail
+                 messages:
+                   invalid: You must set a valid email
+            from:
+             name: From Email
+             type: sfWidgetFormInput 
+             attributes:
+              size: 30
+             validators:
+              email:
+                class: sfValidatorEmail
+                messages:
+                  invalid: You must set a valid email 
+            subject:
+             name: Email Subject
+             type: sfWidgetFormInput 
+             attributes:
+              size: 55
+             
+             

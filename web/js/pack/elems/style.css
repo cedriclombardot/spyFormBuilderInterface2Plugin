@@ -1,0 +1,332 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #567276;
+}
+.barred {
+	text-decoration: line-through;
+}
+#menu {
+	background-color: #233A57;
+	width: 300px;
+	margin: 0 0 0 530px!important;
+	margin: 0 0 0 530px !important;
+	position: fixed !important;
+	position: absolute;
+	padding: 0;
+	list-style: none;
+	z-index: 10;
+	color: #FFFFFF;
+}
+#menu #header {
+	display: block;
+	width: 256px;
+	margin-left: 10px;
+	margin-bottom: 16px;
+}
+#menu #header #logozone {
+	background-color: #355073;
+}
+#menu #header #logozone img {
+	margin: 6px;
+	filter:Alpha(opacity=0,finishopacity=0,style=2);
+-moz-opacity:0; opacity:0;
+}
+#page {
+	width: 600px;
+	background-color: #FFFFFF;
+	border: 8px solid #EFEFEF;
+	margin: 30px;
+}
+.myborder {
+	font-size: 10px;
+	font-weight: bold;
+	color: #666666;
+	border: 1px solid #CCCCCC;
+}
+
+#menu #addi {
+	margin-top: 10px;
+	margin-right: 25px;
+	cursor: pointer;
+}
+#page #zonetext {
+	background-image: url(gfx/lowback.jpg);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	height: 680px;
+	width: 480px;
+	margin-left:10px;
+	background-color: #FFFFFF;
+}
+#page #zonetext input {
+	border: 1px solid #567276;
+	background-color: #66CC33;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#page #zoneinfo .info1 {
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 22px;
+}
+.btn {
+	color: #576980;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #E6E9EE;
+	border: 2px solid #576980;
+}
+.impform {
+	border: 2px solid #C6CACE;
+	background-color: #DCE0E7;
+	color: #C6CACE;
+	font-size: 12px;
+}
+#menu .ddlink {
+	width: 256px;
+	margin-left: 10px;
+	margin-top: 2px;
+	background-color: #355073;
+}
+#menu .ddlink #pubzone {
+	margin-left: 3px;
+}
+#menu .ddlink .top {
+	background-image: url(gfx/hh2.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+#menu .ddlink .bottom {
+	background-image: url(gfx/hh3.gif);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+}
+#menu .ddlink a.high {
+	font-size: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 26px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+#page #zoneinfo {
+	height: 280px;
+	background-image: url(gfx/backbottom.jpg);
+	background-repeat: repeat-x;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+#page #zoneinfo .info2 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #576980;
+	text-decoration: none;
+	line-height: 16px;
+}
+#menu .ddlink  ul {
+	margin: 0px;
+	padding: 10px 0px 10px 20px;
+}
+#page #zoneinfo #zonemessage {
+	border: 2px solid #A0ADBC;
+	background-color: #C8CFD9;
+	position: absolute;
+	top: 740px;
+	left: 10px;
+	width: 462px;
+	padding: 5px;
+}
+a.stylelink {
+	color: #006699;
+	background-color: #EAFBFF;
+	border: 1px solid #00CCFF;
+	font-weight: bold;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	margin: 5px;
+	text-decoration: none;
+}
+a.stylelink:hover{
+	color: #00CCCC;
+	background-color: #FFFFFF;
+	text-decoration: underline;
+}
+.codezone {
+	background-color: #EFF8E7;
+	background-image: url(gfx/zonecodeback.jpg);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	border: 2px solid #8FCF5A;
+	padding: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #006600;
+}
+.codezone .gray {
+	color: #999999;
+}
+.loader {
+	padding-top: 40px;
+	padding-left: 40px;
+}
+#zonemessage #formessage p {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 14px;
+}
+#page #zonetext h1 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #A8B4C2;
+	
+}
+.recolor {	color: #006699;
+}
+.recolor2 {	color: #009933;
+}
+#page #zonetext .title {
+	display: block;
+	height: 48px;
+	width: 100%;
+	border-bottom-width: 2px;
+	border-bottom-style: dotted;
+	border-bottom-color: #33CC00;
+	float: left;
+}
+#menu .ddlink  li {
+	list-style-type: none;
+}
+#menu .ddlink li  a {
+	font-size: 12px;
+	font-weight: bold;
+	color: #E9E9E9;
+	text-decoration: none;
+}
+#menu .ddlink li a:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+#rssread {
+margin: 1px;
+}
+#logoseries img {
+	margin: 1px;
+	filter:Alpha(opacity=0,finishopacity=0,style=2);
+	-moz-opacity:0; opacity:0;
+}
+.hihltest {
+	width: 100px;
+	text-align: center;
+	line-height: 100px;
+	font-size: 16px;
+	color: #666666;
+	font-weight: bold;
+	border: 1px solid #CCCCCC;
+	cursor: pointer;
+	display: inline;
+	margin: 5px;
+	padding: 15px 5px;
+}
+.hihltest2 {
+	width: 100px;
+	text-align: center;
+	font-size: 16px;
+	color: #FFFFFF;
+	font-weight: bold;
+	border: 2px solid #CCCCCC;
+	cursor: pointer;
+	display: inline;
+	background-color: #CCCCCC;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.morphcolltest {
+	width: 100px;
+	text-align: center;
+	line-height: 100px;
+	font-size: 16px;
+	color: #666666;
+	font-weight: bold;
+	border: 2px solid #CCCCCC;
+	cursor: pointer;
+	display: inline;
+	margin: 5px;
+	padding: 15px 5px;
+	background-color: #E1E1E1;
+}
+#maphoto {
+}
+.imaa {
+	float: left;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+#diaporama .linktest {
+	font-weight: bold;
+	color: #006699;
+	text-decoration: none;
+	background-color: #FCFCFC;
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+}
+#diaporama {
+	display: block;
+	height: 250px;
+}
+#diaporama .miniphotos {
+	border: 1px solid #CCCCCC;
+	margin: 4px;
+}
+#page #zonetext .accoblock {
+	border: 2px solid #F2F2F2;
+	background-color: #FFFFCC;
+		width: 400px;
+}
+#page #zonetext .accoblock .titleacco {
+	display: block;
+	background-color: #CCCCFF;
+	padding-left: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border: 1px solid #FFFFFF;
+}
+#page #zonetext .accoblock a {
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	
+}
+
+#page #zonetext .accoblock .accotexte {
+	background-color: #FFFFF4;
+	font-size: 12px;
+	color: #999999;
+	width: 400px;
+}
+#menu .ddlink .blilisite {
+	display: block;
+	height: 50px;
+	width: 100%;
+	text-align: center;
+}
+#page .accoblock .titleacco {
+	border: 1px solid #00CC66;
+	background-color: #EFFCEB;
+}
+#page .accoblock .titleacco a {
+	color: #009900;
+	font-weight: bold;
+}

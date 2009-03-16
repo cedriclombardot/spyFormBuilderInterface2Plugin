@@ -1,0 +1,6 @@
+all:
+  javascripts:    [ "/spyFormBuilderInterface2Plugin/js/pack/lib/simpleajax" ,  "/spyFormBuilderInterface2Plugin/js/pack/lib/simple" ]
+paramsSuccess:
+  has_layout: false
+executeMoveDown:
+  has_layout: false

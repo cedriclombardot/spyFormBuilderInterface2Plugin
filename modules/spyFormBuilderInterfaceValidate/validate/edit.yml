@@ -1,0 +1,12 @@
+methods:
+  post:
+    - "spy_form_builder_validators{validator_type}"
+#    - "spy_form_builder_validators{invalid_msg}"
+    
+names:
+  spy_form_builder_validators{validator_type}:
+    required: true
+    required_msg: You have to choose a type
+#  spy_form_builder_field_validations{invalid_msg}:
+#    required: true
+#    required_msg: You have to set an error message

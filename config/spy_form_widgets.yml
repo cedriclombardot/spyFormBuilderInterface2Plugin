@@ -1,0 +1,34 @@
+all:
+  widgets:
+    fields:
+      input_text:
+        name: Text Field
+        type: sfWidgetFormInput
+        params:
+          attributes:
+            size:
+              name: Size of field
+              type: sfWidgetFormInput
+              attributes:
+                size: 3
+              validators:
+                numeric:
+                  class: sfValidatorInteger
+                  params:
+                  messages:
+                    invalid: You must set an number
+      select_tag:
+        name: Select Tag
+        type: spyWidgetFormSelect
+        params:
+           attributes:
+            multiple:
+              name: Multiple
+              type: sfWidgetFormInputCheckbox                 
+           options:
+            choices:
+              name: Choices
+              type: sfWidgetFormTextarea
+              attributes:
+                size: 15x10         
+  

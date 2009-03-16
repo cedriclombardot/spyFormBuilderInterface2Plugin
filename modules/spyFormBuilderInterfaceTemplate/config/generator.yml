@@ -1,0 +1,25 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      SpyFormBuilder
+    theme:            default
+    
+    fields:
+      form_template:
+        name:        ""
+    
+    edit:
+      title:          Modification du template <small><i>[%%name%%]</i></small>
+      display:
+        NONE: [ template ]
+      actions:
+        _save: ~
+        formulaire:
+          name: Retour au formulaire
+          action: formulaire
+      fields:
+        template:
+          type: textarea_tag
+          params:
+            size: 100x20
+          

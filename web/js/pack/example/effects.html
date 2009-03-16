@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Effects</title>
+<script language="javascript" type="text/javascript" src="../lib/simple.js"></script>
+<link href="../elems/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="page">
+<img src="../elems/logoSJS.jpg" alt="SImpleJS" id="SJSlogo" width="477" height="102" />
+<h1>effects</h1>
+  <p><span class="recolor"></span></p>
+	<div align="center">
+	
+  <div id="hlel_1" class="hihltest" onclick="$pulsate(this.id,5,400); return false">$pulsate</div><div id="hlel_2" class="hihltest" onclick="$opacity(this.id, 100, 20, 600); return false">$opacity</div>
+  <div id="hlel_3" class="hihltest" style="filter:Alpha(opacity=1,finishopacity=0,style=2); -moz-opacity:100; opacity:100;" onclick="$shiftOpacity(this.id,400); return false">$shiftOpacity</div><br />
+  
+  <div id="hlel_4" class="hihltest" onclick="$highlight(this.id); return false">$highlight</div><div id="hlel_5" class="hihltest" onclick="$textColor(this.id, '#00FF66','#666666',700); return false">$textColor</div>
+  <div id="hlel_6" class="hihltest" onclick="$morphColor(this.id, '#FFFFFF', '#666666', '#FF6600', '#FFFFFF', '#FFCC00', '#CCCCCC', 600); return false">$morphColor</div>
+  <br />
+
+  
+   <input type="button" onclick="$toggle('testtoggle'); return false" name="Button" value="$toggle" />  <input type="button" onclick="$blinddown('testtoggle'); return false" name="Button2" value="$blinddown" />  
+   <input type="button" onclick="$blindup('testtoggle'); return false" name="Button" value="$blindup" />
+  <div id="testtoggle" style="display:none; width:430px" >
+  <div class="myborder">
+  Lorem Ipsum is simply dummy text of the
+  printing and typesetting industry. Lorem Ipsum has been the industry's standard
+  dummy text ever since the 1500s, when an unknown printer took a galley of type
+  and scrambled it to make a type specimen book. It has survived not only five
+  centuries, but also the leap into electronic typesetting, remaining essentially
+  unchanged. It was popularised in the 1960s with the release of Letraset sheets
+  containing Lorem Ipsum passages, and more recently with desktop publishing
+  software like Aldus PageMaker including versions of Lorem Ipsum.
+  </div>
+ </div>
+
+  
+  
+  <p>&nbsp;</p>
+  <div class="codezone">
+    <p>&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;simple.js&quot;&gt;&lt;/script&gt;</p>
+</div>
+</div></body>
+</html>

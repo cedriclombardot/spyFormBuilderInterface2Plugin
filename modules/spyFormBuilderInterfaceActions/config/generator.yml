@@ -1,0 +1,35 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      SpyFormBuilderAction
+    theme:            default
+    
+    
+    list:
+       title:         List of fields
+       display: [ action_type ]
+       
+    edit:
+      title:          Edition of action <small><i>[%%action_type%%]</i></small>
+      display:
+          NONE:  [ _action_type , _form_id ]
+          "Params": []
+      actions:
+        dolist: 
+          name: Return to the form
+          type: submit_tag
+          params: class=sf_admin_action_list name=doList
+          action: doList
+          
+        _save: ~
+        _save_and_list: ~
+        _delete: ~
+      fields:
+        field_type: 
+          params:
+            onChange:  $ajaxreplace('sf_fieldset_param__res', '../../params/field_type/'+this.value, false); $('params_o').innerHTML='';
+        form_id:
+          type: input_tag
+          name: ""
+        field_params:
+          name:        ""

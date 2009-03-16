@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>simpleacco.js</title>
+<script language="javascript" type="text/javascript" src="../lib/simple.js"></script>
+<script language="javascript" type="text/javascript" src="../lib/simpleacco.js"></script>
+<script>
+$AccoInit('acco0;acco1;acco2;acco3;');
+</script>
+<link href="../elems/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="page">
+<img src="../elems/logoSJS.jpg" alt="SImpleJS" id="SJSlogo" width="477" height="102" />
+<h1>simpleacco.js </h1>
+
+<div class="accoblock">
+<div class="titleacco">
+<a href="#" onclick="$accopush(0); return false">$accopush(0)</a> or <a href="#" onclick="$accopush(0,true); return false">$accopush(0,true)</a></div>
+<div id="acco0" class="accotexte"><div class="myborder">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec adipiscing fermentum mi. Vestibulum volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin massa enim, sollicitudin et, adipiscing a, lobortis vel, nisi. Donec ut dolor. Nullam vel orci. Nam sem sem, rhoncus sit amet, faucibus et, venenatis vel, ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Etiam tincidunt enim in tellus. Integer in felis. Cras vestibulum, ante in adipiscing tempor, tortor nisi gravida purus, varius convallis tellus sem eget ante. Aenean sit amet urna non nisl sagittis condimentum. Maecenas non nunc non felis elementum consequat. Donec et felis.</div>
+  </div>
+</div>
+<div class="accoblock">
+<div class="titleacco">
+<a href="#" onclick="$accopush(1); return false">$accopush(1)</a> or <a href="#" onclick="$accopush(1,true); return false">$accopush(1,true)</a></div>
+<div id="acco1" class="accotexte" style="display:none"><div class="myborder">Fusce mattis justo id est. Sed dapibus felis. In dignissim, dui at congue vestibulum, elit libero vestibulum mauris, sit amet malesuada ipsum quam sit amet neque. Sed ut mi. Ut posuere, urna quis consequat commodo, metus libero consectetuer mi, rutrum bibendum ligula erat nec leo. Aenean euismod. Aliquam erat volutpat. Morbi non arcu. Duis ornare neque sed nisl. Aenean auctor neque.</div>
+  </div>
+</div>
+<div class="accoblock">
+<div class="titleacco">
+<a href="#" onclick="$accopush(2); return false">$accopush(2)</a> or <a href="#" onclick="$accopush(2,true); return false">$accopush(2,true)</a></div>
+<div id="acco2" class="accotexte" style="display:none"><div class="myborder">Suspendisse ipsum nulla, luctus non, sagittis quis, cursus sit amet, magna. Nullam a diam. Nulla a eros. Sed auctor tortor ac purus. Phasellus convallis. Vivamus molestie auctor velit. Ut at purus. Aenean vitae eros facilisis tortor accumsan posuere. Nam nonummy purus eget tellus. Fusce nulla ligula, euismod ac, commodo ut, consequat vitae, massa. Proin ipsum augue, suscipit vel, blandit quis, varius non, odio. Praesent tincidunt.</div>
+  </div>
+</div>
+<div class="accoblock">
+<div class="titleacco">
+<a href="#" onclick="$accopush(3); return false">$accopush(3)</a> or <a href="#" onclick="$accopush(3,true); return false">$accopush(3,true)</a></div>
+<div id="acco3" class="accotexte" style="display:none"><div class="myborder">Maecenas imperdiet, sem id pellentesque suscipit, nibh mauris ornare sem, ac ornare nisi sem vel libero. Donec dictum mauris sed leo. Aenean sed lorem. Maecenas nonummy. Pellentesque ut ligula. Fusce dui. Integer ornare, augue tempor facilisis rhoncus, felis orci pulvinar sem, non iaculis purus pede ut ligula. Fusce condimentum, neque quis varius auctor, magna metus pretium ipsum, ut gravida augue lacus vel neque. Maecenas ornare. Cras eleifend neque. Curabitur ornare commodo dui. Proin tristique, mauris at malesuada pulvinar, risus lectus ornare nisl, congue condimentum mauris sem eu est. Vestibulum ornare enim at nibh. Sed tristique mauris in lectus. Vivamus tristique justo at metus. Nunc laoreet lectus quis mauris ultricies sodales. Nunc semper sollicitudin dolor.</div>
+  </div>
+</div><br />
+
+
+  <div class="codezone">
+    <p>&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;simple.js&quot;&gt;&lt;/script&gt;<br />
+    &lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot; src=&quot;simpleacco.js&quot;&gt;&lt;/script&gt;</p>
+    <p>&lt;script&gt;$AccoInit('mydiv0;mydiv1;mydiv2;'); //your
+      list of div &lt;/script&gt;</p>
+    <p>&lt;a href=&quot;#&quot; onclick=&quot;$accopush(0); return false&quot;&gt;click
+      here&lt;/a&gt;<br />
+      &lt;div id=&quot;mydiv0&quot; style=&quot;width: 800px;&quot;&gt;texte&lt;/div&gt;<br />
+      &lt;a href=&quot;#&quot; onclick=&quot;$accopush(1); return false&quot;&gt;click
+      here&lt;/a&gt;<br />
+      &lt;div id=&quot;mydiv1&quot; style=&quot;display:none; width: 800px;&quot;&gt;texte&lt;/div&gt;<br />
+      &lt;a href=&quot;#&quot; onclick=&quot;$accopush(2,true); return false&quot;&gt;click
+      here&lt;/a&gt;<br />
+      &lt;div id=&quot;mydiv2&quot; style=&quot;display:none; width: 800px;&quot;&gt;texte&lt;/div&gt;</p>
+  </div>
+</div></body>
+</html>
