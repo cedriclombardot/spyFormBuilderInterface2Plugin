@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd" >
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" >
-  <body>
-      <trans-unit>
-         <source>Return to the form</source>
-          <target>Retour au formulaire</target>
-      </trans-unit>
-      <trans-unit>
-         <source>Widget type</source>
-          <target>Type de champ</target>
-      </trans-unit>
-      <trans-unit>
-         <source>Hide on edit</source>
-          <target>Cacher à l'édition</target>
-      </trans-unit>
-  </body>
- </file>
+	  <file original="global" source-language="en" datatype="plaintext" >
+	  <header />
+	  <body>
+	      <trans-unit>
+	         <source>Return to the form</source>
+	         <target>Retour au formulaire</target>
+	      </trans-unit>
+	      <trans-unit>
+	         <source>Widget type</source>
+	          <target>Type de champ</target>
+	      </trans-unit>
+	      <trans-unit>
+	         <source>Hide on edit</source>
+	          <target>Cacher à l'édition</target>
+	      </trans-unit>
+	  </body>
+	 </file>
+ 
 </xliff>

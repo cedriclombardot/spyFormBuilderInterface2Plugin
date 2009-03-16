@@ -7,7 +7,7 @@ all:
         params:
           options:
             to:
-             name: Destnator of the mail
+             name: Destinator of the mail
              type: sfWidgetFormInput
              attributes:
                size: 30
@@ -31,5 +31,15 @@ all:
              type: sfWidgetFormInput 
              attributes:
               size: 55
-             
-             
+      store_propel:
+        name: Store In propel Database
+        type: spyActionStoreInPropel
+        params:
+          options:
+            dbname:
+              name: Name of The database
+              type: sfWidgetFormInput
+              attributes:
+                size: 30
+              options:
+                default: propel
