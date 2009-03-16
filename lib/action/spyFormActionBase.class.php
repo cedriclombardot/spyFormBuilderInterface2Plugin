@@ -16,7 +16,8 @@ abstract class spyFormActionBase {
 		
 	}
 	
-	/*
+	
+	/**
 	 * @return spyForm
 	 */
 	public function getContext(){
@@ -63,5 +64,9 @@ abstract class spyFormActionBase {
 	
 	/* Execute the action */
 	abstract public function execute();
+	
+	public function preExecute(){
+	
+	}
 }
 ?>

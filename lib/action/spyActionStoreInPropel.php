@@ -9,6 +9,22 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		$this->setOption('class',sfInflector::camelize($this->getOption('table_name')));
 	}
 	
+	public function preExecute(){
+		$c=$this->getOption('class');
+		if($this->getContext()->isInEditMode()){
+			$myObject=call_user_func_array(array($c.'Peer','retrieveByPk'),array('id'=>$this->getContext()->datas['id']));
+				
+			if($myObject instanceof $c){
+				$fields=call_user_func_array(array($c.'Peer','getFieldNames'),array(BasePeer::TYPE_FIELDNAME));
+				foreach($fields as $field){
+					$datas[$field]=call_user_func_array(array($myObject,'get'.sfInflector::camelize($field)),array());
+				}
+				$this->getContext()->datas=$datas;
+			}
+			
+			
+		}
+	}
 	public function execute(){
 		$c=$this->getOption('class');
 		if($this->getContext()->isInEditMode()){
@@ -23,6 +39,8 @@ class spyActionStoreInPropel extends spyFormActionBase{
 			call_user_func_array(array($myObject,'set'.sfInflector::camelize($field)),array($value));
 		}
 		$myObject->save();
+		
+		$this->getContext()->datas['id']=$myObject->getId();
 	}
 	
 	public static function generateYml(){

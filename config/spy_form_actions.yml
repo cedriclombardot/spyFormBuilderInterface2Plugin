@@ -53,3 +53,28 @@ all:
               type: sfWidgetFormInput
               attributes:
                 size: 30
+      redirect:
+        name: Redirect to an other Page
+        type: spyActionRedirect
+        params:
+          options:
+            url:
+              name: Url to forward
+              type: sfWidgetFormInput
+              attributes:
+                size: 100
+      redirect_to_edit:
+        name: Redirect to the edit Form
+        type: spyActionRedirectToEdit 
+      conditionnal_actions_start:
+        name: Start a group of action do with conditionnals
+        type: spyActionConditionnalStart
+        params:
+          options:
+            condition:
+              name: Condition in PHP without ?php tags
+              type: sfWidgetFormEditArea
+              attributes:
+                cols: 105
+                rows: 20
+              

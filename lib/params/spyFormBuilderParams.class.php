@@ -44,7 +44,9 @@ abstract class spyFormBuilderParams{
 	 * @return array
 	 */
 	protected function getParams(){
-		$this->params=$this->field['params'];
+		if(array_key_exists('params',$this->field))
+			$this->params=$this->field['params'];
+		
 	}
 	
 	/*

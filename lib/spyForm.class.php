@@ -98,6 +98,9 @@ class spyForm {
 		if(sizeof($helps)>0)
 			$this->formulaire->getWidgetSchema()->setHelps($helps);
 		
+		//TO retrieve Datas
+		$this->doPreActions();				
+	
 		//Edit Mode
 		if($this->isInEditMode()){
 			$this->formulaire->setDefaults($this->datas);
@@ -110,12 +113,11 @@ class spyForm {
 		
 		
 		
-		/*
+		/**
 		 * Bind
 		 */
 		if(sfContext::getInstance()->getRequest()->isMethod('post')){
 			$this->formulaire->bind(sfContext::getInstance()->getRequest()->getParameter('spy_form_builder'));
-			
 			if ($this->formulaire->isValid())
 			{
 				$this->doPostActions();	
@@ -139,6 +141,20 @@ class spyForm {
 			$myAction->execute();
 		}
 	}
+	protected function doPreActions(){
+		$this->actions=$this->form_object->getSpyFormBuilderActions();
+		foreach($this->actions as $action){
+			//Construit l'action
+			$action_class=$this->all_actions[$action->getActionType()]['type'];
+			$params=$action->getActionParams();
+			if(is_array($params))
+			$options=(array_key_exists('options',$params))?$params['options']:array();
+			
+			
+			$myAction=new $action_class($options, $this->formulaire->getValues(),$this);
+			$myAction->preExecute();
+		}
+	}
 	public function render(){
 		$form=$this->formulaire;
 		$form_submit_url=sfContext::getInstance()->getModuleName().'/'.sfContext::getInstance()->getActionName();
@@ -150,9 +166,6 @@ class spyForm {
 		}
 		if(sfContext::getInstance()->getRequest()->getParameter('edit')){
 			$form_submit_url.='&edit='.sfContext::getInstance()->getRequest()->getParameter('edit');
-		}
-		if(sfContext::getInstance()->getRequest()->getParameter('table')){
-			$form_submit_url.='&table='.sfContext::getInstance()->getRequest()->getParameter('table');
 		}
 		eval('?>'.$this->form_object->getTemplate());
 	}
