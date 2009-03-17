@@ -5,7 +5,7 @@
  * parametres pour le champ séléctionné
  * 
  */
-class spyFormBuilderValidatorParams {
+class spyFormBuilderValidatorParams extends spyFormBuilderParams {
 	
 	/*
 	 * Retourne le nom du groupe de champs
