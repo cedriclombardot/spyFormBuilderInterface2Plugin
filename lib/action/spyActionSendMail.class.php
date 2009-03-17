@@ -5,7 +5,7 @@ class spyActionSendMail extends spyFormActionBase{
 	var $tpl;
 	
 	public function configure($options){
-		$this->tpl=realpath(dirname(__FILE__).'../../').'/tpl/mail.tpl';
+		$this->tpl=realpath(dirname(__FILE__).'../../').'/tpl/mail/default.tpl';
 	}
 	
 	public function execute(){

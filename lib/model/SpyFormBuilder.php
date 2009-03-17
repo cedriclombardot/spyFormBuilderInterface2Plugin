@@ -9,7 +9,7 @@ class SpyFormBuilder extends BaseSpyFormBuilder
 	}
 	
 	public function getDefaultTemplate(){
-		$f=realpath(dirname(__FILE__).'/../').'/tpl/default.tpl';
+		$f=realpath(dirname(__FILE__).'/../').'/tpl/form/default.tpl';
 		$fp=fopen($f,'r');
 		$tpl=fread($fp,filesize($f));
 		fclose($fp);
