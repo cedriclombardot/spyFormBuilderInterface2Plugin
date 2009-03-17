@@ -77,4 +77,7 @@ all:
               attributes:
                 cols: 105
                 rows: 20
+      conditionnal_actions_end:
+        name: End a group of action do with conditionnals
+        type: spyActionConditionnalEnd
               
