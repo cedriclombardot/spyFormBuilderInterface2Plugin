@@ -64,5 +64,21 @@ all:
               attributes:
                 default: %month%/%day%/%year%
                 size: 50
-            
+      textarea:
+        name: A textarea zone
+        type: sfWidgetFormTextarea
+        params:
+          attributes:
+            rows:
+              name: Rows
+              type: sfWidgetFormInput
+              attributes:
+                size: 5
+                default: 4
+            cols:
+              name: Cols
+              type: sfWidgetFormInput
+              attributes:
+                size: 5
+                default: 30
               
