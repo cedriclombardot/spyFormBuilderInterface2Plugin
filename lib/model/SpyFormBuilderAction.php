@@ -12,8 +12,11 @@ class SpyFormBuilderAction extends BaseSpyFormBuilderAction
 		if(!array_key_exists($this->getActionType(),$all_actions))
 			return '';
 		foreach($all_actions[$this->getActionType()] as $aname=>$action){
-			
-			echo '<a href="'.sfContext::getInstance()->getController()->genUrl('spyFormBuilderInterfaceActions/action',false).'/do/'.$aname.'/id/'.$this->getId().'" title="'.$action['title'].'"><img src="'.$root.'/'.$action['img'].'" alt="'.$action['title'].'" /></a>';
+			if(!array_key_exists('img',$action))
+				$action['img']='/sf/sf_admin/images/default_icon.png';
+				
+			echo '<a href="'.sfContext::getInstance()->getController()->genUrl('spyFormBuilderInterfaceActions/action',false).'/do/'.$aname.'/id/'.$this->getId().'" title="'.$action['title'].'">
+			<img src="'.$root.'/'.$action['img'].'" alt="'.$action['title'].'" /></a>';
 		}
 	}
 	public function getActionParams(){

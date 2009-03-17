@@ -4,7 +4,6 @@ all:
       store_propel:
         generateYml:
           title: Générate the YML
-          img: /sf/sf_admin/images/default_icon.png
     post:
       send_mail:
         name: Send an Email
