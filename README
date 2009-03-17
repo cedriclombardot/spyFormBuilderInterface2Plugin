@@ -40,11 +40,15 @@ You could do this calls :
     [php]
     $this->formulaire=new spyForm($id,$datas);
     
-    
+
   * **$id** is the numeric id or the name of the form
   * **$datas** is the array of the data if you have use the storeInPropelAction, you cold set $datas[id] with the row of the Id
 
+And in you tpl
 
+    [php]
+    $formulaire->render();
+    
 #### The actions principe
 
 ![principe of actions](http://symfony.spyrit.net/images/spyFormBuilderInterface/actions-1.jpg "spyFormBuilderInterface Action principe")
