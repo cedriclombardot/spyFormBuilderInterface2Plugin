@@ -35,4 +35,17 @@ all:
               type: sfWidgetFormTextarea
               attributes:
                 size: 15x10         
-  
+      radio_group:
+        name: Group of Radio buttons
+        type: spyWidgetFormSelectRadio
+        storage:
+          type: varchar
+          size: 255
+          index: index
+        params:
+          options:
+           choices:
+             name: Choices
+             type: sfWidgetFormTextarea
+             attributes:
+               size: 15x10 

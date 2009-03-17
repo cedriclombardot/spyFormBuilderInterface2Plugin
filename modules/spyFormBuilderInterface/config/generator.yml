@@ -4,6 +4,9 @@ generator:
     model_class:      SpyFormBuilder
     theme:            default
     
+    fields:
+      name:
+        help: Techical unique name please don't set special charachter or spaces only [a-Z][0-9]and _
 
     list: 
       title:          List of your forms

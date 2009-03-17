@@ -85,4 +85,17 @@ class spyFormBuilderInterfaceFieldsActions extends autospyFormBuilderInterfaceFi
 	public function executeDoList(){
 		$this->redirect('spyFormBuilderInterface/edit?id='.$this->getRequestParameter('form_id'));
 	}
+	
+	/*
+	 * Execute an advanced action for one form Action
+	 */
+	public function executeAction($request){
+		$this->forward404Unless($request->getParameter('do'));
+		$this->forward404Unless($request->getParameter('id'));
+		$this->action=SpyFormBuilderFieldsPeer::retrieveByPK($this->getRequestParameter('id'));
+		$this->forward404Unless($this->action);
+		$actions=sfConfig::get('sfw_widgets_fields');
+		$this->class=$actions[$this->action->geWidgetType()]['type'];
+		$this->do=$request->getParameter('do');
+	}
 }

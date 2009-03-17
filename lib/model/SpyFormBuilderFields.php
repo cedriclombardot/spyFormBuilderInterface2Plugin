@@ -1,4 +1,6 @@
 <?php
+require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_widgets.yml'));
+
 
 class SpyFormBuilderFields extends BaseSpyFormBuilderFields
 {
@@ -22,12 +24,35 @@ class SpyFormBuilderFields extends BaseSpyFormBuilderFields
 		$this->setRank($this->getMaxRank()+1);
 	}
 	
+	/**
+	 * @return boolean true if the field could have validators false for
+	 * example for sumbit
+	 */
 	public function isValidable(){
-		return true;//@todo a faire
+		$all_validable=sfConfig::get('sfw_widgets_validable',array());
+	
+		if(!array_key_exists($this->getWidgetType(),$all_validable))
+			return true;
+			
+		return $all_validable[$this->getWidgetType()];
+		
 	}
 	
 	public function getActions(){
-		return '';
+		
+		$request = sfContext::getInstance()->getRequest();
+  		$root = $request->getRelativeUrlRoot();
+
+		$all_actions=sfConfig::get('sfw_widgets_actions',array());
+		if(!array_key_exists($this->getWidgetType(),$all_actions))
+			return '';
+		foreach($all_actions[$this->getWidgetType()] as $aname=>$action){
+			if(!array_key_exists('img',$action))
+				$action['img']='/sf/sf_admin/images/default_icon.png';
+				
+			echo '<a href="'.sfContext::getInstance()->getController()->genUrl('spyFormBuilderInterfaceFields/action',false).'/do/'.$aname.'/id/'.$this->getId().'" title="'.$action['title'].'">
+			<img src="'.$root.'/'.$action['img'].'" alt="'.$action['title'].'" /></a>';
+		}
 	}
 	
 	public function moveUp(){

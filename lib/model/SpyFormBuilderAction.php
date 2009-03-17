@@ -8,7 +8,7 @@ class SpyFormBuilderAction extends BaseSpyFormBuilderAction
 		$request = sfContext::getInstance()->getRequest();
   		$root = $request->getRelativeUrlRoot();
 
-		$all_actions=sfConfig::get('sfa_actions_actions');
+		$all_actions=sfConfig::get('sfa_actions_actions',array());
 		if(!array_key_exists($this->getActionType(),$all_actions))
 			return '';
 		foreach($all_actions[$this->getActionType()] as $aname=>$action){
