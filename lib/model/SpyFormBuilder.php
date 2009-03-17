@@ -22,4 +22,18 @@ class SpyFormBuilder extends BaseSpyFormBuilder
 		return $tpl;
 	}
 	
+	public function getWidgetTypeFromFieldName($name){
+		$field=$this->getFieldFromFieldName($name);
+		if(!$field instanceof SpyFormBuilderFields)
+			return false;
+		return $field->getWidgetType();
+	}
+	
+	public function getFieldFromFieldName($name){
+		$c=new Criteria();
+		$c->add(SpyFormBuilderFieldsPeer::FORM_ID,$this->getId());
+		$c->add(SpyFormBuilderFieldsPeer::NAME,$name);
+		return SpyFormBuilderFieldsPeer::doSelectOne($c);
+	}
+	
 }

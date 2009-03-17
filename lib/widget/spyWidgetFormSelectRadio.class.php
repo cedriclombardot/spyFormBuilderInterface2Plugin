@@ -9,6 +9,7 @@ class spyWidgetFormSelectRadio extends sfWidgetFormSelectRadio{
 		 	$ch[$choix]=$choix;
 		 }
 		 $options['choices']=$ch;
+		
 		 parent::__construct($options, $attributes);
 	}
 }

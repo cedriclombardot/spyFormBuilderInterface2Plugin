@@ -3,6 +3,8 @@
 class spyActionStoreInPropel extends spyFormActionBase{
 	
 	public function configure($options){
+		require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_widgets.yml'));
+		
 		if($this->getOption('table_name')==''){
 			$this->setOption('table_name',str_replace(' ','_',$this->getContext()->form_object->getName()));
 		}
@@ -36,8 +38,18 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		}else{
 			$myObject=new $c;
 		}
+		$fields=sfConfig::get('sfw_widgets_fields');
 		foreach($this->getDatas() as $field=>$value){
 			if(method_exists($myObject,'set'.sfInflector::camelize($field))){
+				$type=$this->getWidgetTypeFromFieldName($field);
+				if(array_key_exists('storage',$fields[$type])){
+					if(array_key_exists('formater',$fields[$type]['storage'])){
+						$value=$this->format($fields[$type]['storage']['formater'],$value);
+				
+					}
+				}
+				
+				
 				call_user_func_array(array($myObject,'set'.sfInflector::camelize($field)),array($value));
 			}else{
 				throw new sfException('You have to rebuild the model the field "'.$field.'" doesn\'t exist in the table');
@@ -49,6 +61,25 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		$this->getContext()->datas['id']=$myObject->getId();
 	}
 	
+	protected function format($formatter,$value){
+		if(is_array($value)){
+			foreach($value as $k=>$v){
+				
+				if($v!='')
+					$value['%'.$k.'%']=$v;
+				unset($value[$k]);
+			}
+		}
+		
+		if(sizeof($value)==0)
+			return null;
+		return strtr($formatter,$value);
+		
+	}
+	
+	protected function getWidgetTypeFromFieldName($fieldname){
+		return $this->getContext()->form_object->getWidgetTypeFromFieldName($fieldname);
+	}
 	public static function generateYml(){
 		require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_widgets.yml'));
 		$yml=array();
@@ -59,6 +90,7 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		$fields=$form->getSpyFormBuilderFieldss();
 		$db=$action->getParameter('dbname','propel');
 		$tb=$action->getParameter('table_name',str_replace(' ','_',$form->getName()));
+		
 		$table=$tb;
 		$yml[$db]=array($table=>array());
 		$yml_table=&$yml[$db][$table];
@@ -80,7 +112,10 @@ class spyActionStoreInPropel extends spyFormActionBase{
 		$fields=sfConfig::get('sfw_widgets_fields');
 		if(array_key_exists($field->getWidgetType(),$fields)){
 			if(array_key_exists('storage',$fields[$field->getWidgetType()])){
-				return $fields[$field->getWidgetType()]['storage'];
+				$row=$fields[$field->getWidgetType()]['storage'];
+				if(array_key_exists('formater',$row))
+					unset($row['formater']);
+				return $row;
 			}
 		}
 		return array('type'=>'longvarchar');

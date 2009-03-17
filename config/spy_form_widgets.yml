@@ -48,4 +48,21 @@ all:
              name: Choices
              type: sfWidgetFormTextarea
              attributes:
-               size: 15x10 
+               size: 15x10
+      date_tag:
+        name: A date select tag
+        type: sfWidgetFormDate
+        storage:
+          formater: %year%-%month%-%day%
+          type: date
+          index: index
+        params:
+          options:
+            format:
+              name: Date format
+              type: sfWidgetFormInput
+              attributes:
+                default: %month%/%day%/%year%
+                size: 50
+            
+              

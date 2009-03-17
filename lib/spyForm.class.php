@@ -87,6 +87,10 @@ class spyForm {
 		//Liste des champs
 		$c=new Criteria();
 		$c->addAscendingOrderByColumn(SpyFormBuilderFieldsPeer::RANK);
+		
+		//TO retrieve Datas
+		$this->doPreActions();
+		
 		$this->fields=$this->form_object->getSpyFormBuilderFieldss($c);
 		
 		foreach($this->fields as $field){
@@ -104,12 +108,16 @@ class spyForm {
 		if(sizeof($this->helps)>0)
 			$this->formulaire->getWidgetSchema()->setHelps($this->helps);
 			
-		//TO retrieve Datas
-		$this->doPreActions();	
+			
 
 		//Validators
 		$this->formulaire->setValidators($this->valids);
 		
+		//Edit Mode
+		//print_r($this->datas);
+		if($this->isInEditMode())
+			$this->formulaire->setDefaults($this->datas);
+			
 		$this->formulaire->getWidgetSchema()->setNameFormat($this->form_object->getName().'[%s]');
 		
 		/**
@@ -196,9 +204,7 @@ class spyForm {
 		
 		$this->prepareValidators($field,$validators);
 		
-		//Edit Mode
-		if($this->isInEditMode())
-			$this->formulaire->setDefaults($this->datas);
+		
 		
 	}
 

@@ -73,13 +73,17 @@ abstract class spyFormBuilderParams{
 	protected function renderField($name,$field, $array){
 		//print_r($field);
 		$label=$this->renderLabel($name,$field, $array);
-		if(!is_array(@$field['option'])){
-			$field['option']=array();
+		if(!is_array(@$field['options'])){
+			$field['options']=array();
 		}
 		if(!is_array(@$field['attributes'])){
 			$field['attributes']=array();
 		}
-		$widget=new $field['type'](@$field['option'],@$field['attributes']);
+		$widget=new $field['type'](@$field['options'],@$field['attributes']);
+		//echo $field['attributes']['default'];
+		if(@$field['value']==''){
+			$field['value']=@$field['attributes']['default'];
+		}
 		$name=$this->getGroupName().'[params]['.$array.']['.$name.']';
 		return  $label.'<div class="content">'.$widget->render($name,@$field['value']).'</div>';
 	}
