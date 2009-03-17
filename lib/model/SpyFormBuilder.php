@@ -6,10 +6,16 @@ class SpyFormBuilder extends BaseSpyFormBuilder
 		if(!parent::getTemplate()){
 			return $this->getDefaultTemplate();
 		}
+		
+		return parent::getTemplate();
 	}
 	
 	public function getDefaultTemplate(){
-		$f=realpath(dirname(__FILE__).'/../').'/tpl/form/default.tpl';
+		return $this->getTemplateFile();
+	}
+	
+	public function getTemplateFile($file='default.tpl'){
+		$f=realpath(dirname(__FILE__).'/../').'/tpl/form/'.$file;
 		$fp=fopen($f,'r');
 		$tpl=fread($fp,filesize($f));
 		fclose($fp);

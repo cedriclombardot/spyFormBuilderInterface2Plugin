@@ -11,7 +11,7 @@ generator:
     edit:
       title:          Modification du template <small><i>[%%name%%]</i></small>
       display:
-        NONE: [ template ]
+        NONE: [ _select_theme, template ]
       actions:
         _save: ~
         formulaire:
