@@ -11,14 +11,17 @@ propel:
     id: ~
     widget_type: { type: varchar, size: 255, required: true, index: index }
     label: { type: varchar, size: 255 }
-    name: { type: varchar, size: 255 }
+    name: { type: varchar, size: 255, required: true }
     help: { type: varchar, size: 255 }
     widget_params: { type: longvarchar }
     hide_on_edit: {  type: longvarchar }
     only_for: { type: longvarchar }
     form_id: { type: integer, foreignTable: spy_form_builder, foreignReference: id, onDelete: cascade, required: true }
     created_at: ~
-    rank: { type: integer }
+    rank: { type: integer, required: true, index: index }
+    _uniques:
+      name_form: [ name, form_id ]
+      rank_form: [ rank, form_id ]
     
   spy_form_builder_validators: #Liste des validations de formulaires pour les champs
     id: ~
@@ -26,11 +29,15 @@ propel:
     field_id: { type: integer, foreignTable: spy_form_builder_fields, foreignReference: id, onDelete: cascade, required: true }
     validator_params: { type: longvarchar }
     invalid_msg: { type: longvarchar }
-    rank: { type: integer }
+    rank: { type: integer, required: true, index: index }
+    _uniques:
+      rank_field: [ rank, field_id ]
 
   spy_form_builder_action:
     id: ~
     action_type: { type: varchar, size: 255, required: true, index: index }
     action_params: { type: longvarchar }
     form_id: { type: integer, foreignTable: spy_form_builder, foreignReference: id, onDelete: cascade, required: true }   
-    rank: { type: integer }
+    rank: { type: integer, required: true, index: index }
+    _uniques:
+      rank_form: [ rank, form_id ]

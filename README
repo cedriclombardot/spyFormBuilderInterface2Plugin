@@ -1,0 +1,97 @@
+# spyFormBuilderInterface2Plugin
+
+The principe of spyFormBuilderInterface2Plugin is to help you to create forms with your admin
+
+## You could also Install
+
+To Help you to regenerate your model if you use storeInPropel you could install [sfPropelSqlDiffPlugin](http://www.symfony-project.org/plugins/sfPropelSqlDiffPlugin)
+
+## Basic Configurations
+
+In your front enable the module :
+
+    [yml]
+    enable_modules: [ ..., spyFormBuilderInterfaceFront ]
+    
+In your backend :
+
+    [yml]
+    enable_modules: [ ..., spyFormBuilderInterface, spyFormBuilderInterfaceActions, spyFormBuilderInterfaceFields, spyFormBuilderInterfaceTemplate, spyFormBuilderInterfaceValidate ]
+    
+You have to enable i18n also.
+
+## How to use
+
+### spyFormBuilderInterface Module
+
+![preview of spyFormBuilderInterface](http://symfony.spyrit.net/images/spyFormBuilderInterface/preview-1.jpg "spyFormBuilderInterface Preview")
+
+
+The spyFormbuilderInterface module is the module that you need to call to manage your forms
+
+Call this one, creates your fields, yours action, customise your template and enjoy it !
+
+### Use the generated form
+
+If you don't want to use the code of spyFormBuilderInterfaceFront
+
+You could do this calls :
+
+    [php]
+    $this->formulaire=new spyForm($id,$datas);
+    
+    
+  * **$id** is the numeric id or the name of the form
+  * **$datas** is the array of the data if you have use the storeInPropelAction, you cold set $datas[id] with the row of the Id
+
+
+#### The actions principe
+
+![principe of actions](http://symfony.spyrit.net/images/spyFormBuilderInterface/actions-1.jpg "spyFormBuilderInterface Action principe")
+
+
+## How to personalize the template for the form
+
+[Like for sfForms](http://www.symfony-project.org/book/forms/1_2/en/03-Forms-for-web-Designers)
+
+
+## Exisitings wigets
+
+For the moment this realease contains not a lot of widgets, but in the next realease the list will go to increase 
+
+ * Input_text Tags : sfWidgetFormInput
+ * select_tag : spyWidgetFormSelect based on sfWidgetFormSelect
+ * radio_group : spyWidgetFormSelectRadio based on sfWidgetFormSelectRadio
+ * date with selects : sfWidgetFormDate
+ * textarea : sfWidgetFormTextarea
+ 
+## Exisitings validators
+
+You could use %value% et %parameter_name% in your errors message like for sfForms 
+
+ * required : sfValidatorRequired
+ * max length for string: sfValidatorLengthString
+ * min legnth : sfValidatorLengthString
+ * email : sfValidatorEmail
+
+## Exisitings actions
+
+ * store in propel object : spyActionStoreInPropel
+ * send an email : spyActionSendMail for the moment only with default.tpl
+ * Redirect : spyActionRedirect
+ * Redirect to the edit action : spyActionRedirectToEdit with spyActionStoreInPropel executing before or a $datas[id] getted
+ * conditionnals actions spyActionConditionnalStart : TO add a conditionnal actions the php code must return a boolean
+ * end of conditionnals actions : spyActionConditionnalEnd End of a condition
+ 
+
+## TODO
+
+ * Adding fields / validators / actions
+ * Check the validations of admin form
+ * Documentation for developpers
+ * import and export systems
+ * Ajax sort for fields and actions
+ 
+ 
+ 
+  
