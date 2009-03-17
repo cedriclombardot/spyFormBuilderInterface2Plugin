@@ -216,9 +216,9 @@ class spyForm {
 			}
 			$this->valids[$field->getName()]=new sfValidatorAnd($valid);
 		}elseif(sizeof($validators)==1){
-			$valids[$field->getName()]=$this->prepareValidator($validators[0]);
+			$this->valids[$field->getName()]=$this->prepareValidator($validators[0]);
 		}else{
-			$valids[$field->getName()]=new sfValidatorNone();
+			$this->valids[$field->getName()]=new sfValidatorNone();
 		}
 	}
 	
