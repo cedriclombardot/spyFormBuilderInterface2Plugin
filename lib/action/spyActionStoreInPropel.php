@@ -17,7 +17,8 @@ class spyActionStoreInPropel extends spyFormActionBase{
 			if($myObject instanceof $c){
 				$fields=call_user_func_array(array($c.'Peer','getFieldNames'),array(BasePeer::TYPE_FIELDNAME));
 				foreach($fields as $field){
-					$datas[$field]=call_user_func_array(array($myObject,'get'.sfInflector::camelize($field)),array());
+						$datas[$field]=call_user_func_array(array($myObject,'get'.sfInflector::camelize($field)),array());
+
 				}
 				$this->getContext()->datas=$datas;
 			}
@@ -36,7 +37,12 @@ class spyActionStoreInPropel extends spyFormActionBase{
 			$myObject=new $c;
 		}
 		foreach($this->getDatas() as $field=>$value){
-			call_user_func_array(array($myObject,'set'.sfInflector::camelize($field)),array($value));
+			if(method_exists($myObject,'set'.sfInflector::camelize($field))){
+				call_user_func_array(array($myObject,'set'.sfInflector::camelize($field)),array($value));
+			}else{
+				throw new sfException('You have to rebuild the model the field "'.$field.'" doesn\'t exist in the table');
+			}
+			
 		}
 		$myObject->save();
 		
