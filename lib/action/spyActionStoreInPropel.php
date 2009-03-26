@@ -22,6 +22,7 @@ class spyActionStoreInPropel extends spyFormActionBase{
 						$datas[$field]=call_user_func_array(array($myObject,'get'.sfInflector::camelize($field)),array());
 
 				}
+				
 				$this->getContext()->datas=$datas;
 			}
 			
