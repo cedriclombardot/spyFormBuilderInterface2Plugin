@@ -27,8 +27,12 @@ class BaseSpyFormBuilderValidatorsForm extends BaseFormPropel
       'field_id'         => new sfValidatorPropelChoice(array('model' => 'SpyFormBuilderFields', 'column' => 'id')),
       'validator_params' => new sfValidatorString(array('required' => false)),
       'invalid_msg'      => new sfValidatorString(array('required' => false)),
-      'rank'             => new sfValidatorInteger(array('required' => false)),
+      'rank'             => new sfValidatorInteger(),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorPropelUnique(array('model' => 'SpyFormBuilderValidators', 'column' => array('rank', 'field_id')))
+    );
 
     $this->widgetSchema->setNameFormat('spy_form_builder_validators[%s]');
 

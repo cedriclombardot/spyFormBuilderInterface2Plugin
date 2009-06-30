@@ -1,5 +1,6 @@
 <?php
-require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_actions.yml'));
+
+#require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_actions.yml'));
 
 class SpyFormBuilderAction extends BaseSpyFormBuilderAction
 {
@@ -14,8 +15,8 @@ class SpyFormBuilderAction extends BaseSpyFormBuilderAction
 		foreach($all_actions[$this->getActionType()] as $aname=>$action){
 			if(!array_key_exists('img',$action))
 				$action['img']='/sf/sf_admin/images/default_icon.png';
-				
-			echo '<a href="'.sfContext::getInstance()->getController()->genUrl('spyFormBuilderInterfaceActions/action',false).'/do/'.$aname.'/id/'.$this->getId().'" title="'.$action['title'].'">
+				$controller=sfContext::getInstance()->getController();
+			echo '<a href="'.$controller->genUrl('spyFormBuilderInterfaceActions/action',false).'/do/'.$aname.'/id/'.$this->getId().'" title="'.$action['title'].'">
 			<img src="'.$root.'/'.$action['img'].'" alt="'.$action['title'].'" /></a>';
 		}
 	}

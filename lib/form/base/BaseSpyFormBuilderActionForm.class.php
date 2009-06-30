@@ -16,6 +16,7 @@ class BaseSpyFormBuilderActionForm extends BaseFormPropel
       'id'            => new sfWidgetFormInputHidden(),
       'action_type'   => new sfWidgetFormInput(),
       'action_params' => new sfWidgetFormTextarea(),
+      'form_id'       => new sfWidgetFormPropelChoice(array('model' => 'SpyFormBuilder', 'add_empty' => false)),
       'rank'          => new sfWidgetFormInput(),
     ));
 
@@ -23,8 +24,13 @@ class BaseSpyFormBuilderActionForm extends BaseFormPropel
       'id'            => new sfValidatorPropelChoice(array('model' => 'SpyFormBuilderAction', 'column' => 'id', 'required' => false)),
       'action_type'   => new sfValidatorString(array('max_length' => 255)),
       'action_params' => new sfValidatorString(array('required' => false)),
-      'rank'          => new sfValidatorInteger(array('required' => false)),
+      'form_id'       => new sfValidatorPropelChoice(array('model' => 'SpyFormBuilder', 'column' => 'id')),
+      'rank'          => new sfValidatorInteger(),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorPropelUnique(array('model' => 'SpyFormBuilderAction', 'column' => array('rank', 'form_id')))
+    );
 
     $this->widgetSchema->setNameFormat('spy_form_builder_action[%s]');
 

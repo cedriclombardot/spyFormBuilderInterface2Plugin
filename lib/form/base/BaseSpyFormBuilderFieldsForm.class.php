@@ -17,8 +17,9 @@ class BaseSpyFormBuilderFieldsForm extends BaseFormPropel
       'widget_type'   => new sfWidgetFormInput(),
       'label'         => new sfWidgetFormInput(),
       'name'          => new sfWidgetFormInput(),
+      'help'          => new sfWidgetFormInput(),
       'widget_params' => new sfWidgetFormTextarea(),
-      'hide_on_edit'  => new sfWidgetFormInputCheckbox(),
+      'hide_on_edit'  => new sfWidgetFormTextarea(),
       'only_for'      => new sfWidgetFormTextarea(),
       'form_id'       => new sfWidgetFormPropelChoice(array('model' => 'SpyFormBuilder', 'add_empty' => false)),
       'created_at'    => new sfWidgetFormDateTime(),
@@ -29,14 +30,22 @@ class BaseSpyFormBuilderFieldsForm extends BaseFormPropel
       'id'            => new sfValidatorPropelChoice(array('model' => 'SpyFormBuilderFields', 'column' => 'id', 'required' => false)),
       'widget_type'   => new sfValidatorString(array('max_length' => 255)),
       'label'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'name'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'name'          => new sfValidatorString(array('max_length' => 255)),
+      'help'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'widget_params' => new sfValidatorString(array('required' => false)),
-      'hide_on_edit'  => new sfValidatorBoolean(array('required' => false)),
+      'hide_on_edit'  => new sfValidatorString(array('required' => false)),
       'only_for'      => new sfValidatorString(array('required' => false)),
       'form_id'       => new sfValidatorPropelChoice(array('model' => 'SpyFormBuilder', 'column' => 'id')),
       'created_at'    => new sfValidatorDateTime(array('required' => false)),
-      'rank'          => new sfValidatorInteger(array('required' => false)),
+      'rank'          => new sfValidatorInteger(),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorAnd(array(
+        new sfValidatorPropelUnique(array('model' => 'SpyFormBuilderFields', 'column' => array('name', 'form_id'))),
+        new sfValidatorPropelUnique(array('model' => 'SpyFormBuilderFields', 'column' => array('rank', 'form_id'))),
+      ))
+    );
 
     $this->widgetSchema->setNameFormat('spy_form_builder_fields[%s]');
 

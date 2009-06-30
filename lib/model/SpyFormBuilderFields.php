@@ -1,5 +1,5 @@
 <?php
-require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_widgets.yml'));
+#require_once(sfContext::getInstance()->getConfigCache()->checkConfig('config/spy_form_widgets.yml'));
 
 
 class SpyFormBuilderFields extends BaseSpyFormBuilderFields
