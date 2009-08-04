@@ -189,10 +189,12 @@ class spyForm {
 		$wclass=$this->all_fields[$field->getWidgetType()]['type'];
 		
 		$params=$field->getWidgetParams();
-		
-		$options=(array_key_exists('options',$params))?$params['options']:array();
-		$attributes=(array_key_exists('attributes',$params))?$params['attributes']:array();
-		
+		if(is_array($params)){
+			$options=(array_key_exists('options',$params))?$params['options']:array();
+			$attributes=(array_key_exists('attributes',$params))?$params['attributes']:array();
+		}else{
+			$options=$attributes=array();
+		}
 		$this->setWidget($field->getName(),new $wclass($options,$attributes));
 		$this->setLabel($field->getName(),$field->getLabel());
 		

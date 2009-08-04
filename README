@@ -20,6 +20,12 @@ In your backend :
     
 You have to enable i18n also.
 
+
+## CHANGELOG
+
+* Now support captcha if you install sfExtraWidgetsPlugin
+
+
 ## How to use
 
 ### spyFormBuilderInterface Module
@@ -86,7 +92,6 @@ You could use %value% et %parameter_name% in your errors message like for sfForm
  * Redirect to the edit action : spyActionRedirectToEdit with spyActionStoreInPropel executing before or a $datas[id] getted
  * conditionnals actions spyActionConditionnalStart : TO add a conditionnal actions the php code must return a boolean
  * end of conditionnals actions : spyActionConditionnalEnd End of a condition
- 
 
 ## TODO
 

@@ -81,4 +81,9 @@ all:
               attributes:
                 size: 5
                 default: 30
+<?php if(class_exists('sfExtraWidgetFormInputCaptcha')): ?>
+      captcha:
+        name: A captcha image code
+        type: sfExtraWidgetFormInputCaptcha
+<?php endif; ?>
               

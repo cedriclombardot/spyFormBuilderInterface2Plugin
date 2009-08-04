@@ -39,3 +39,8 @@ all:
       email:
         name: Email Validator
         type: sfValidatorEmail               
+<?php if(class_exists('sfExtraValidatorCaptcha')): ?>
+      captcha:
+        name: Captcha validator
+        type: sfValidatorExtraValidatorCaptcha
+<?php endif; ?>
