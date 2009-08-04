@@ -86,4 +86,45 @@ all:
         name: A captcha image code
         type: sfExtraWidgetFormInputCaptcha
 <?php endif; ?>
-              
+<?php if(class_exists('sfExtraWidgetFormInputDatepicker')): ?>
+      datepicker:
+        name: A DatePicker
+        type: sfExtraWidgetFormInputDatepicker
+        params:
+          options:
+            style:
+              name: Style
+              type: sfWidgetFormSelect
+              options:
+                choices: [ adobe, vista ]
+              default: adobe
+<?php endif; ?>
+<?php if(class_exists('sfExtraWidgetFormInputSpin')): ?>             
+      spin:
+         name: A spin field
+         type: sfExtraWidgetFormInputSpin
+         params:
+           options:
+             min:
+               name: Min
+               type: sfWidgetFormInput
+               attributes:
+                 size: 3
+               validators:
+                 numeric:
+                   class: sfValidatorInteger
+                   params:
+                   messages:
+                     invalid: You must set an number 
+             max:
+               name: Max
+               type: sfWidgetFormInput
+               attributes:
+                 size: 3
+               validators:
+                 numeric:
+                   class: sfValidatorInteger
+                   params:
+                   messages:
+                     invalid: You must set an number
+<?php endif; ?>                        
