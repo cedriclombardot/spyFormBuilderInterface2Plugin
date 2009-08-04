@@ -23,8 +23,10 @@ You have to enable i18n also.
 
 ## CHANGELOG
 
-* Now support captcha if you install sfExtraWidgetsPlugin
-
+### sfExtraWidgetsPlugin
+	
+	* Now support captcha if you install sfExtraWidgetsPlugin (don't forget required and captcha validator)
+	
 
 ## How to use
 
