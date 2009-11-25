@@ -1,6 +1,18 @@
 all:
   widgets:
     fields:
+      fieldset_start:
+        name: Fieldset Start
+        type: spyWidgetFormFieldsetStart
+        params:
+          options:
+            legend: 
+              name: legend 
+              type: sfWidgetFormInput
+      fieldset_end:
+        name: Fieldset End
+        type: spyWidgetFormFieldsetEnd
+        
       input_text:
         name: Text Field
         type: sfWidgetFormInput
@@ -34,7 +46,20 @@ all:
               name: Choices
               type: sfWidgetFormTextarea
               attributes:
-                size: 15x10         
+                size: 15x10  
+      country_select_tag:
+        name: Contry select tag
+        type: sfWidgetFormI18nSelectCountry
+        storage:
+          type: varchar
+          size: 5
+          index: index
+        params: 
+          options:
+            culture:
+              name: Cuture
+              type: sfWidgetFormInput
+              value: <?php echo sfContext::getInstance()->getUser()->getCulture(); ?>       
       radio_group:
         name: Group of Radio buttons
         type: spyWidgetFormSelectRadio

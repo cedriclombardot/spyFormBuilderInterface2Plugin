@@ -103,7 +103,6 @@ class spyForm {
 		
 		//Insert les labels
 		$this->formulaire->getWidgetSchema()->setLabels($this->labels);
-		
 		//Messages d'aide
 		if(sizeof($this->helps)>0)
 			$this->formulaire->getWidgetSchema()->setHelps($this->helps);
@@ -196,8 +195,10 @@ class spyForm {
 			$options=$attributes=array();
 		}
 		$this->setWidget($field->getName(),new $wclass($options,$attributes));
-		$this->setLabel($field->getName(),$field->getLabel());
-		
+		if(!in_array($wclass,array('spyWidgetFormFieldsetStart','spyWidgetFormFieldsetEnd')))
+			$this->setLabel($field->getName(),$field->getLabel());
+		else
+			$this->setLabel($field->getName()," ");
 		if($field->getHelp()!='')
 			$this->setHelp($field->getName(),$field->getHelp());
 
