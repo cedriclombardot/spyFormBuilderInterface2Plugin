@@ -107,8 +107,7 @@ class spyForm {
 		if(sizeof($this->helps)>0)
 			$this->formulaire->getWidgetSchema()->setHelps($this->helps);
 			
-			
-
+		
 		//Validators
 		$this->formulaire->setValidators($this->valids);
 		
@@ -218,6 +217,7 @@ class spyForm {
 	 * @param Array of SpyFormBuilderValidators the validators Objects
 	 */
 	protected function prepareValidators(SpyFormBuilderFields $field, $validators=array()){
+		
 		if(sizeof($validators)>1){
 			$valid=array();
 			foreach($validators as $validator){
@@ -225,7 +225,8 @@ class spyForm {
 			}
 			$this->valids[$field->getName()]=new sfValidatorAnd($valid);
 		}elseif(sizeof($validators)==1){
-			$this->valids[$field->getName()]=$this->prepareValidator($validators[0]);
+			
+			$this->valids[$field->getName()]=new sfValidatorAnd($this->prepareValidator($validators[0]));
 		}else{
 			$this->valids[$field->getName()]=new sfValidatorNone();
 		}
